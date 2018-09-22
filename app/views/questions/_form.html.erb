@@ -1,0 +1,51 @@
+
+<%= form_with(model: question, local: true) do |form| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+     </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :"标题" %>
+    <%= form.text_field :title,class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :"类型" %>
+    <%= form.text_field :typename,class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :"正文" %>
+    <%= form.text_area :content,class:"wysihtml5" %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1">
+      <%= form.submit class:"btn btn-success" ,method: :put,value:"提交"%>
+    </div>
+    <div class="col-md-11">
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('.wysihtml5').each(function(i, elem) {
+            $(elem).wysihtml5();
+        });
+
+    })
+</script>
+<style type="text/css">
+  iframe.wysihtml5-sandbox{
+    width: 100% ! important;
+  }
+</style>

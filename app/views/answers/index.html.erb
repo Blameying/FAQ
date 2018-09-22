@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<h3>回答</h3>
+<%=button_to "返回",questions_path,method: :get,class:"btn btn-success" %>
+<% @answers.each do |answer| %>
+  <h5>
+    <%="姓名："+answer.username+"       学号："+answer.identifier+"       电话："+answer.phone%>
+  </h5>
+  <%answer.content.split(/<br>/).each do |str| %>
+	  <p><%=str%></p>
+  <%end%>
+  <div class="row" id="buttons">
+      <div class="col-md-11"></div>
+      <div class="col-md-1">
+        <%=button_to '删除', answer, method: :delete, data: { confirm: '确定删除么?' } ,class:"btn btn-success" %>
+      </div>
+  </div>
+
+<%end %>

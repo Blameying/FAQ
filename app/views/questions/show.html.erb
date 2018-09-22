@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>标题:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @question.content %>
+</p>
+
+<p>
+  <strong>类型:</strong>
+  <%= @question.typename %>
+</p>
+<%if session[:current_user_id] %>
+<%= link_to '编辑', edit_question_path(@question) %> |
+<%else%>
+  <td><%= link_to '回答', new_answer_path(question) %></td>
+<%end%>
+<%= link_to '返回', questions_path %>
