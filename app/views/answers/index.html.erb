@@ -5,9 +5,7 @@
   <h5>
     <%="姓名："+answer.username+"       学号："+answer.identifier+"       电话："+answer.phone%>
   </h5>
-  <%answer.content.split(/<br>/).each do |str| %>
-	  <p><%=str%></p>
-  <%end%>
+  <%=answer.content.to_s.html_safe%>
   <div class="row" id="buttons">
       <div class="col-md-11"></div>
       <div class="col-md-1">
